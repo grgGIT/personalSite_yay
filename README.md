@@ -1,3 +1,3 @@
 # personalSite_yay
 
-geoffmakes.com
+[geoffmakes.com]
