@@ -1,3 +1,3 @@
 # personalSite_yay
 
-[geoffmakes.com]
+[go here to see it](geoffmakes.com)
