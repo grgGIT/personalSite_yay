@@ -1,25 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lead thyself forth!</title>
-    <link rel="stylesheet" href="../css/leading.css">
-    <link rel="stylesheet" href="../css/general.css">
-</head>
-<header>
-    <h4>You can also use these to get around</h4>
-    <a href="./services.html">Services</a>
-    <a href="./dev.html">Dev Stuff</a>
-    <a href="./arts.html">Arts</a>
-</header>
-<body>
-    <!-- <h1>GOOD TIDINGS TRAVELERS!!</h1>
-    <p></p> -->
-</body>
 
-
-
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c1:#1a1a2e;--c2:#16213e;--c3:#0f3460;--c4:#e94560;
+  --skin1:#f0c080;--skin2:#d4955a;--skin3:#b87040;
+  --remote:#2a2a3a;--btn:#3a3a4a;--led:#00ff88;
+}
+body{font-family:var(--font-sans,sans-serif)}
+.nav-wrap{
+  min-height:500px;
+  background:linear-gradient(135deg,var(--c1) 0%,var(--c2) 50%,var(--c3) 100%);
+  border-radius:var(--border-radius-lg,12px);
+  padding:20px;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  position:relative;overflow:hidden;
+}
+.nav-wrap::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 20%,rgba(233,69,96,0.15) 0%,transparent 60%);
+  pointer-events:none;
+}
+.tv-screen{
+  width:100%;max-width:560px;
+  background:#0a0a14;
+  border:3px solid #333;
+  border-radius:12px;
+  padding:8px;
+  box-shadow:0 0 0 6px #1a1a1a,0 0 0 8px #333;
+  position:relative;
+}
+.tv-top{
+  background:#111;border-radius:8px;
+  padding:6px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6px;min-height:160px;
+}
+.tv-channel{
+  border-radius:6px;
+  cursor:pointer;
+  transition:all 0.25s;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:6px;
+  padding:10px 6px;
+  position:relative;
+  border:2px solid transparent;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.tv-channel.active{
+  border-color:var(--c4);
+  box-shadow:0 0 12px rgba(233,69,96,0.4);
+}
+.tv-channel:hover{filter:brightness(1.15)}
+.tv-channel:active{transform:scale(0.97)}
+.ch-icon{font-size:28px;line-height:1}
+.ch-label{font-size:11px;font-weight:500;color:#eee;text-align:center;letter-spacing:0.3px}
+.ch-sub{font-size:10px;color:#888;text-align:center}
+.tv-scanline{
+  position:absolute;inset:0;border-radius:6px;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.08) 3px,rgba(0,0,0,0.08) 4px);
+  pointer-events:none;
+}
+.tv-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:6px 10px 2px;
+}
+.tv-brand{font-size:10px;color:#444;letter-spacing:2px;font-weight:500}
+.tv-led{width:6px;height:6px;border-radius:50%;background:var(--led);box-shadow:0 0 4px var(--led)}
+.controls-row{
+  display:flex;align-items:flex-end;justify-content:center;
+  gap:24px;width:100%;max-width:560px;
+}
+.hand-scene{
+  width:120px;height:160px;
+  position:relative;
+  perspective:400px;
+  flex-shrink:0;
+}
+.hand-3d{
+  width:100%;height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+.poly-palm{
+  position:absolute;
+  bottom:10px;left:50%;transform:translateX(-50%);
+  width:64px;height:54px;
+}
+.poly-palm svg,.poly-finger svg{display:block}
+.poly-finger{
+  position:absolute;
+  transform-origin:bottom center;
+  transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+.f-thumb{left:4px;bottom:52px;width:22px;height:44px}
+.f-index{left:22px;bottom:56px;width:18px;height:60px}
+.f-middle{left:38px;bottom:58px;width:18px;height:64px}
+.f-ring{left:54px;bottom:56px;width:16px;height:58px}
+.f-pinky{left:68px;bottom:52px;width:14px;height:48px}
+.point-label{
+  position:absolute;top:-6px;left:50%;transform:translateX(-50%);
+  background:var(--c4);color:#fff;font-size:9px;padding:2px 6px;
+  border-radius:10px;white-space:nowrap;opacity:0;
+  transition:opacity 0.3s;pointer-events:none;
+}
+.hand-3d.pointing .point-label{opacity:1}
+.remote{
+  background:var(--remote);
+  border-radius:20px 20px 28px 28px;
+  width:90px;
+  padding:12px 10px 16px;
+  border:1.5px solid #3a3a4a;
+  box-shadow:4px 4px 0 #111,-2px -2px 0 #3a3a4a;
+  flex-shrink:0;
+}
+.remote-screen{
+  background:#001a0a;
+  border-radius:6px;
+  height:28px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:10px;
+  border:1px solid #003310;
+}
+.remote-display{font-size:10px;color:var(--led);font-family:monospace;letter-spacing:1px}
+.remote-btns{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px}
+.r-btn{
+  background:var(--btn);
+  border:none;border-radius:6px;
+  color:#ccc;font-size:9px;padding:5px 4px;
+  cursor:pointer;
+  transition:all 0.15s;
+  border-bottom:2px solid #111;
+  font-family:var(--font-sans,sans-serif);
+  -webkit-tap-highlight-color:transparent;
+}
+.r-btn:active,.r-btn.lit{background:var(--c4);color:#fff;border-bottom-color:rgba(0,0,0,0.3);transform:translateY(1px)}
+.r-dpad{
+  width:60px;height:60px;
+  position:relative;margin:0 auto;
+}
+.d-btn{
+  position:absolute;
+  background:var(--btn);border:none;border-radius:4px;
+  color:#aaa;font-size:11px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.d-btn:active{background:var(--c4);color:#fff;transform:scale(0.93)}
+.d-up{top:0;left:50%;transform:translateX(-50%);width:20px;height:18px}
+.d-dn{bottom:0;left:50%;transform:translateX(-50%);width:20px;height:18px}
+.d-lt{left:0;top:50%;transform:translateY(-50%);width:18px;height:20px}
+.d-rt{right:0;top:50%;transform:translateY(-50%);width:18px;height:20px}
+.d-ctr{top:50%;left:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:#444}
+.status-bar{
+  width:100%;max-width:560px;
+  background:rgba(255,255,255,0.05);
+  border-radius:8px;
+  padding:8px 14px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.status-txt{font-size:12px;color:#aaa}
+.status-page{font-size:13px;color:#fff;font-weight:500}
+.mobile-hint{font-size:10px;color:#666;text-align:center}
+@media(max-width:400px){
+  .controls-row{gap:12px}
+  .hand-scene{width:90px;height:130px}
+  .remote{width:76px}
+  .tv-top{min-height:140px}
+  .ch-icon{font-size:22px}
+}
+</style>
 
 <div class="nav-wrap" role="navigation" aria-label="TV remote page navigation">
   <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Interactive TV remote navigation — select a page from the split screen</h2>
@@ -234,6 +386,3 @@ document.addEventListener('keydown',e=>{
 buildGrid();
 setTimeout(()=>selectByIndex(0),400);
 </script>
-
-</html>
-

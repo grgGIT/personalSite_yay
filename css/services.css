@@ -1,0 +1,97 @@
+/* Organic black & white design */
+
+body{
+    font-family: 'Inter', sans-serif;
+    background:#f7f7f7;
+    color:#111;
+    margin:0;
+}
+
+/* Navigation */
+
+.nav{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    padding:25px;
+    background:white;
+    border-bottom:1px solid #e5e5e5;
+}
+
+.nav a{
+    text-decoration:none;
+    color:#111;
+    font-weight:500;
+    letter-spacing:1px;
+}
+
+.nav a:hover{
+    opacity:.6;
+}
+
+/* Hero section */
+
+.hero{
+    text-align:center;
+    padding:80px 20px 40px 20px;
+}
+
+.hero h1{
+    font-family:'Libre Baskerville', serif;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#555;
+    font-size:18px;
+}
+
+/* Services grid */
+
+.services-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    padding:40px;
+}
+
+/* Service cards */
+
+.service-card{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+
+    border:1px solid #ececec;
+
+    font-size:17px;
+    line-height:1.5;
+
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 4px 20px rgba(0,0,0,0.03);
+
+    transition:all .25s ease;
+}
+
+.service-card:hover{
+    transform:translateY(-4px);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Contact section */
+
+.contact{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.email{
+    margin-top:10px;
+    font-weight:600;
+    letter-spacing:1px;
+}

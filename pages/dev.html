@@ -6,13 +6,248 @@
     <title>Dev Corner!</title>
     <link rel="stylesheet" href="../css/dev.css">
     <link rel="stylesheet" href="../css/general.css">
+    <style>
+        .project-dropdown {
+            margin-top: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #444;
+            border-radius: 8px;
+            overflow: hidden;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(79, 170, 255, 0.1);
+            border-bottom: 1px solid #444;
+        }
+
+        .dropdown-header span {
+            font-weight: 600;
+            color: #4faaff;
+            font-size: 1.1rem;
+        }
+
+        .close-dropdown {
+            background: none;
+            border: none;
+            color: #e3e6ee;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s;
+        }
+
+        .close-dropdown:hover {
+            color: #4faaff;
+        }
+
+        .dropdown-body {
+            padding: 15px;
+            color: #b3b8c5;
+            line-height: 1.6;
+        }
+
+        .dropdown-body p {
+            margin: 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-body a {
+            color: #00e6b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .dropdown-body a:hover {
+            color: #4faaff;
+            text-decoration: underline;
+        }
+
+        .project-item {
+            cursor: pointer;
+        }
+        #directory2{
+            color: #4faaff;
+        }
+    </style>
+    
 </head>
 <header>
-    <a href="./services.html">Services</a>
-    <a href="./dev.html">Dev Stuff</a>
-    <a href="./arts.html">Arts</a>
+    <section>
+    <a id="directory2" href="./services.html">Services</a>
+    <a id="directory2" href="./dev.html">Dev Stuff</a>
+    <a id="directory2" href="./arts.html">Arts</a>
+    </section>
+    
+
+    <p>Always open to passionate undertakings and endeavors!</p>
+        <ul id="directoryList">My Links:
+            <li id="directory"><a id="links" target="_blank" href="https://www.figma.com/board/fLRic9b93506P0XXDchH4d/Graphic-portfolio-pieces?t=VtiPFCrXPInW7VFi-0">Figjam for Design work</a></li>
+            <li id="directory"><a id="links" target="_blank" href="https://github.com/grgGIT/grgGIT">My GitHub</a></li>
+        </ul>
 </header>
 <body>
+     <div class="lava-lamp left">
+        <div class="lava-blobs">
+            <div class="blob blob1"></div>
+            <div class="blob blob2"></div>
+            <div class="blob blob3"></div>
+        </div>
+    </div>
+    <div class="lava-lamp right">
+        <div class="lava-blobs">
+            <div class="blob blob1"></div>
+            <div class="blob blob2"></div>
+            <div class="blob blob3"></div>
+        </div>
+    </div>
     
+
+     <section class="project-list">
+        <div class="project-item" data-project='{"title": "NMID+NMD Capstone Spring 2025", "link": "https://github.com/grgGIT/RtRcapstonespringPrototype", "description": "A multimedia project using Arduino."}'>
+            <h3>Project: NMID+NMD Capstone Spring 2025</h3>
+            <h5>Role: Full-Stack Developer, Server/Data Architect, Game Designer, UI/UX Developer, User Research and Testing</h5>
+            <h4>Timeline: December 2024 - April 2025</h4>
+            <p>Multimedia Interactive Exhibit & Educational Game for The Strong National Museum of Play</p>
+            <div class="project-dropdown" style="display: none;">
+                <div class="dropdown-header">
+                    <span></span>
+                    <button class="close-dropdown" aria-label="Close">×</button>
+                </div>
+                <div class="dropdown-body"></div>
+            </div>
+        </div>
+        <div class="project-item" data-project='{"title": "Project: NMID+NMD Capstone Fall 2024", "link": "https://github.com/grgGIT/NMID-NMD-Capstone", "description": "Mobile application development project showcasing native features and smooth user experience."}'>
+            <h3>Project: NMID+NMD Capstone Fall 2024</h3>
+            <h5>Role: Data/Server Architect, Back End Developer, Wireframing</h5>
+            <h4>Timeline: October 2024 - November 2024</h4>
+            <p>Multimedia interaction app for the RIT Cary Collection</p>
+            <div class="project-dropdown" style="display: none;">
+                <div class="dropdown-header">
+                    <span></span>
+                    <button class="close-dropdown" aria-label="Close">×</button>
+                </div>
+                <div class="dropdown-body"></div>
+            </div>
+        </div>
+        <div class="project-item" data-project='{"title": "Library Site", "link": "https://github.com/grgGIT/finalServer2_LibraryApp", "description": "This is a project I made that was inspired by the library homepages I used to see in my public libraries that I visited in the early 2000s. It has a book rating system, a book review system, and a book recommendation system. It has a typical client side interface and an admin interface. It is a large scale server application that is meant to be fairly dynamic."}'>
+            <h3>Project: Library Server with Admin Access</h3>
+            <h4>Timeline: November 2024 - December 2024</h4>
+            <p>Library application server that is large scale and dynamic</p>
+            <div class="project-dropdown" style="display: none;">
+                <div class="dropdown-header">
+                    <span></span>
+                    <button class="close-dropdown" aria-label="Close">×</button>
+                </div>
+                <div class="dropdown-body"></div>
+            </div>
+        </div>
+        <div class="project-item" data-project='{"title": "Recipe Finder Companion", "link": "https://github.com/grgGIT/p3_RecipeFindapp_IGME340", "description": "App uses an open source web API with endpoints that I created an app around. I wanted to create a beneficial cooking assistant for recipes based on specific needs and allowing for intuitive search refinement"}'>
+            <h3>Project: Recipe Finder Application</h3>
+            <h4>Timeline: October 2024 - November 2024</h4>
+            <p>Mobile phone app using a FOSS web API and more to assist cooking</p>
+            <div class="project-dropdown" style="display: none;">
+                <div class="dropdown-header">
+                    <span></span>
+                    <button class="close-dropdown" aria-label="Close">×</button>
+                </div>
+                <div class="dropdown-body"></div>
+            </div>
+        </div>
+        <div class="project-item" data-project='{"title": "Mobile API Explorer Demo", "link": "https://github.com/grgGIT/p2_API_IGME340", "description": " A mobile application using flutter made with the official Marvel API to allow users to search for their favorite characters and comics."}'>
+            <h3>Project: Marvel API Mobile Application</h3>
+            <h4>Timeline: October 2024 - November 2024</h4>
+            <p>Marvel API explorer</p>
+            <div class="project-dropdown" style="display: none;">
+                <div class="dropdown-header">
+                    <span></span>
+                    <button class="close-dropdown" aria-label="Close">×</button>
+                </div>
+                <div class="dropdown-body"></div>
+            </div>
+        </div>
+        <div class="project-item" data-project='{"title": "Dungeons and Dragons Helper WebApp", "link": "https://github.com/IGME-330-01-2235/hw3-proj-combo-grgGIT", "description": " A web application that allows users to create a character, but it is mainly intended to help Game Creators and DMs to have quick and easy tools of various kinds at easy access. "}'>
+            <h3>Project: D&D Dungeon Pal</h3>
+            <h4>Timeline: April 2024 - May 2024</h4>
+            <p>Dungeons and Dragions Companion App for Player and DM help</p>
+            <div class="project-dropdown" style="display: none;">
+                <div class="dropdown-header">
+                    <span></span>
+                    <button class="close-dropdown" aria-label="Close">×</button>
+                </div>
+                <div class="dropdown-body"></div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        const projectItems = document.querySelectorAll('.project-item');
+        
+        projectItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Don't trigger if clicking the close button
+                if (e.target.classList.contains('close-dropdown')) return;
+                
+                const projectData = JSON.parse(this.getAttribute('data-project'));
+                const dropdown = this.querySelector('.project-dropdown');
+                const isOpen = dropdown.style.display !== 'none';
+                
+                // Close all dropdowns
+                document.querySelectorAll('.project-dropdown').forEach(d => {
+                    d.style.display = 'none';
+                });
+                
+                // Open the clicked one if it was closed
+                if (!isOpen) {
+                    showDropdown(dropdown, projectData);
+                }
+            });
+
+            // Handle close button
+            const closeBtn = item.querySelector('.close-dropdown');
+            closeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const dropdown = item.querySelector('.project-dropdown');
+                dropdown.style.display = 'none';
+            });
+        });
+
+        function showDropdown(dropdown, project) {
+            dropdown.style.display = 'block';
+            const header = dropdown.querySelector('.dropdown-header span');
+            const body = dropdown.querySelector('.dropdown-body');
+            
+            header.textContent = project.title;
+            body.innerHTML = `
+                <p>${project.description}</p>
+                <p>Explore the full project on <a href="${project.link}" target="_blank">GitHub</a>.</p>
+            `;
+        }
+    });
+    </script>
 </body>
+
 </html>
