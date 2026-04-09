@@ -13,60 +13,143 @@
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        html, body {
+            width: 100%;
+            min-height: 100%;
+        }
+
         body {
             position: relative;
             overflow-x: hidden;
-            background-color: #06284b;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            color: white;
         }
 
-        #trippy-text{
-        
+        #ftank {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            min-height: 100vh;
+            z-index: -2;
+            overflow: hidden;
+            background: #061a2e;
+            border-radius: 0;
+        }
+
+        #ftc {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        #CRT-Graphic {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 2rem 1.2rem;
+            width: 100%;
+            max-width: 760px;
+            text-align: center;
+        }
+
+        #trippy-text {
             position: relative;
             text-align: center;
             color: white;
-            font-size: 6em;
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
             transition: 0.5s;
             font-family: "Aldrich", sans-serif;
-            z-index: -1;
-            color: white;
+            z-index: 1;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            padding: 20px;
-
+            padding: 0.5rem 0.75rem;
+            line-height: 1.05;
         }
+
         #trippy-text:hover {
             color: #ff69b4;
             text-shadow: 4px 4px 8px rgba(255, 105, 180, 0.8);
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
-        
-        
-    
-        
-   body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #3a7bd5, #00d2ff);
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
 
-#tank-wrap {
-  position: fixed;
-  inset: 0;
-  width: 100%; height: 100vh;
-  z-index: -1;
-}
+        .glass-btn {
+            position: relative;
+            padding: 14px 28px;
+            font-size: 1rem;
+            color: white;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow:
+                0 8px 24px rgba(0,0,0,0.25),
+                inset 0 1px 1px rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            width: min(100%, 280px);
+        }
+
+        .glass-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+            box-shadow:
+                0 12px 28px rgba(0,0,0,0.35),
+                inset 0 1px 2px rgba(255,255,255,0.4);
+        }
+
+        .glass-btn:active {
+            transform: translateY(0);
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .glass-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 14px;
+            background: linear-gradient(
+                180deg,
+                rgba(255,255,255,0.6),
+                rgba(255,255,255,0.1) 40%,
+                rgba(255,255,255,0)
+            );
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            }
+
+            #CRT-Graphic {
+                padding: 1.5rem 1rem;
+            }
+
+            .glass-btn {
+                font-size: 0.95rem;
+                padding: 12px 22px;
+                width: 100%;
+            }
+        }
     </style>
 </head>
     <body>
-        <div id="ftank" style="width:100%;height:100vh;border-radius:12px;overflow:hidden;background:#061a2e;">
-        <canvas id="ftc" style="display:block;"></canvas>
-        
-
-</div>
+        <div id="ftank">
+            <canvas id="ftc"></canvas>
+        </div>
 <script>
 (function(){
 const wrap = document.getElementById('ftank');
@@ -74,7 +157,7 @@ const cv = document.getElementById('ftc');
 const W = wrap.clientWidth||800, H = wrap.clientHeight||500;
 const renderer = new THREE.WebGLRenderer({canvas:cv,antialias:true});
 renderer.setSize(W,H);
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
 renderer.setClearColor(0x061a2e);
 const scene = new THREE.Scene();
 scene.fog = new THREE.FogExp2(0x061a2e,0.022);
@@ -263,6 +346,7 @@ animate();
 window.addEventListener('resize',()=>{
   const nW=wrap.clientWidth,nH=wrap.clientHeight;
   renderer.setSize(nW,nH);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
   cam.aspect=nW/nH;
   cam.updateProjectionMatrix();
 });
