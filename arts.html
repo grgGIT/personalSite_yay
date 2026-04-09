@@ -4,46 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Arts</title>
-    <link rel="stylesheet" href="../css/arts.css">
-    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="./css/arts.css">
+    <link rel="stylesheet" href="./css/general.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Bitcount+Prop+Double+Ink:wght@100..900&family=Cabin+Sketch:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Ranchers&display=swap" rel="stylesheet">
-    <style>
-        #ArtsyHeader{
-            background-color: rgba(255, 255, 255, 0.8);
-            
-            background-size: cover;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-family: "Cabin Sketch", cursive;
-            font-size: 70px;
-        }
-        #actingresume{
-            position: relative;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-        
-    </style>
+<style>
+    #actingresume{
+        color: black;
+    }
+</style>
 </head>
-<header id="ArtsyHeader">
-    <a href="./services.html">Services</a>
-    <a href="./dev.html"> Dev Stuff</a>
-    <a href="./arts.html">Arts</a>
-
-</header>
 <body>
-    <h1 style="text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,
-          -1px 1px 0 #000, 1px 1px 0 #000; color: white;">
-  	There's not much here yet, but I hope to add more of my art in the future!
-    </h1>
-
-<br>
-<button id="actingresume" class="glass-btn" onclick="window.open('../media/GraciaGeoff_Acting_Resume.pdf')"> Click for my Acting Resume</button>
-    
+    <header id="ArtsyHeader">
+        <nav>
+            <a href="./services.html">Services</a>
+            <a href="./dev.html">Dev Stuff</a>
+            <a href="./arts.html">Arts</a>
+        </nav>
+    </header>
+    <main class="content">
+        <h1>There's not much here yet, but I hope to add more of my art in the future!</h1>
+        <button id="actingresume" class="glass-btn" onclick="window.open('./media/GraciaGeoff_Acting_Resume.pdf')">Click for my Acting Resume</button>
+    </main>
 </body>
 </html>

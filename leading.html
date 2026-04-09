@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/leading.css">
   <link rel="stylesheet" href="./css/general.css">
-  <title>Document</title>
+  <title>LEAD THYSELF FORTH!</title>
 </head>
 <body>
 
@@ -212,14 +212,17 @@ function checkOrientation() {
   }
 }
 
-window.addEventListener('resize', checkOrientation);
 window.addEventListener('orientationchange', checkOrientation);
 checkOrientation(); // Initial check
+
+function openLink(url) {
+  window.location.href = url;
+}
 
 const chs=[
   {n:'01',lb:'HOME',sb:'START HERE',col:'#5599ff',bg:'#000816',
    sp:"Mmm... home page...\nD'oh! I mean, welcome!",
-   url:'../index.html',
+   url:'./index.html',
    ic:`<polygon points="16,4 28,16 4,16" fill="COLR"/><rect x="8" y="16" width="16" height="12" rx="1" fill="COLR"/><rect x="12" y="21" width="8" height="7" fill="COLR" opacity="0.35"/>`},
   {n:'02',lb:'SERVICES',sb:'WHAT I DO',col:'#ff8844',bg:'#120400',
    sp:"Services... like when\nsomeone does stuff so\nyou don't have to. Excellent.",
